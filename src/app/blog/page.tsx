@@ -63,14 +63,14 @@ export default function Blog() {
           {blog.title}
         </Heading>
         <Text variant="body-default-l" onBackground="neutral-weak">
-          Stay updated with the latest insights, industry trends, and technical expertise from our team.
+          Stay updated with the latest software development insights, industry trends, and technical expertise from our engineering team.
         </Text>
       </Flex>
       
       {/* Featured Posts Section */}
       <Column fillWidth marginBottom="xl">
         <Heading variant="heading-strong-m" marginBottom="l">
-          Featured Articles
+          Featured Technical Articles
         </Heading>
         <Posts range={[1, 1]} columns="1" thumbnail />
       </Column>
@@ -78,7 +78,7 @@ export default function Blog() {
       {/* Latest Posts Grid */}
       <Column fillWidth marginBottom="xl">
         <Heading variant="heading-strong-m" marginBottom="l">
-          Latest Articles
+          Latest Development Insights
         </Heading>
         <Posts range={[2]} columns="3" thumbnail />
       </Column>
@@ -86,7 +86,7 @@ export default function Blog() {
       {/* Technology Insights Section */}
       <Column fillWidth marginBottom="xl">
         <Heading variant="heading-strong-m" marginBottom="l">
-          Technology Insights
+          Software Engineering Insights
         </Heading>
         <Posts range={[1, 3]} columns="2" thumbnail />
       </Column>

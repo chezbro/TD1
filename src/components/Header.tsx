@@ -53,7 +53,7 @@ const OnlineStatus: React.FC = () => {
           display: 'inline-block' 
         }} 
       />
-      <span>We're Online</span>
+      <span>Development Team Online</span>
     </Flex>
   );
 };

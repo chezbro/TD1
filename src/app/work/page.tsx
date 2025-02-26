@@ -114,7 +114,7 @@ export default function Work() {
           Featured Projects
         </Heading>
         <Text variant="body-default-l" onBackground="neutral-weak">
-          Explore our portfolio of successful projects that showcase our capabilities and expertise.
+          Explore our portfolio of successful software development projects that showcase our technical capabilities and expertise.
         </Text>
       </Column>
       

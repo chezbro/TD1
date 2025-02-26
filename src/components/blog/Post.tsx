@@ -53,7 +53,7 @@ export default function Post({ post, thumbnail }: PostProps) {
             sizes="(max-width: 768px) 100vw, 33vw"
             cursor="interactive"
             src={imageUrl}
-            alt={"Thumbnail of " + post.metadata.title}
+            alt={"Tech article thumbnail: " + post.metadata.title}
             aspectRatio="16 / 9"
           />
         )}
