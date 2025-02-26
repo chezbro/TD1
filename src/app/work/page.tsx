@@ -1,5 +1,5 @@
 import { getPosts } from "@/app/utils/utils";
-import { Column } from "@/once-ui/components";
+import { Column, Flex, Heading, Text, Card } from "@/once-ui/components";
 import { Projects } from "@/components/work/Projects";
 import { baseURL } from "@/app/resources";
 import { person, work } from "@/app/resources/content";
@@ -63,6 +63,61 @@ export default function Work() {
           }),
         }}
       />
+      
+      {/* Introduction Section */}
+      {work.intro && work.intro.display && (
+        <Column fillWidth gap="l" marginBottom="40" paddingX="l">
+          <Heading as="h1" variant="heading-strong-xl">
+            {work.intro.title}
+          </Heading>
+          <Text variant="body-default-l" onBackground="neutral-weak">
+            {work.intro.description}
+          </Text>
+        </Column>
+      )}
+      
+      {/* Expertise Areas */}
+      {work.expertise && (
+        <Column fillWidth gap="xl" marginBottom="40" paddingX="l">
+          <Heading as="h2" variant="heading-strong-xl">
+            Our Areas of Expertise
+          </Heading>
+          <Flex gap="l" wrap horizontal="space-between">
+            {work.expertise.map((area, index) => (
+              <div key={index} style={{ flex: '1 1 300px', minWidth: '300px', maxWidth: '400px' }}>
+                <Card>
+                  <Column gap="m" padding="l">
+                    <Heading as="h3" variant="heading-strong-l">
+                      {area.title}
+                    </Heading>
+                    <Text variant="body-default-m" onBackground="neutral-weak">
+                      {area.description}
+                    </Text>
+                    {area.areas && (
+                      <Column gap="xs">
+                        {area.areas.map((item, idx) => (
+                          <Text key={idx} variant="body-default-s">• {item}</Text>
+                        ))}
+                      </Column>
+                    )}
+                  </Column>
+                </Card>
+              </div>
+            ))}
+          </Flex>
+        </Column>
+      )}
+      
+      {/* Featured Projects Section */}
+      <Column fillWidth gap="l" marginBottom="20" paddingX="l">
+        <Heading as="h2" variant="heading-strong-xl">
+          Featured Projects
+        </Heading>
+        <Text variant="body-default-l" onBackground="neutral-weak">
+          Explore our portfolio of successful projects that showcase our capabilities and expertise.
+        </Text>
+      </Column>
+      
       <Projects />
     </Column>
   );

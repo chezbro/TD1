@@ -1,24 +1,23 @@
 import { InlineCode } from "@/once-ui/components";
 
 const person = {
-  firstName: "Selene",
-  lastName: "Yu",
+  firstName: "Sofrix",
+  lastName: "Development",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Design Engineer",
-  avatar: "/images/avatar.jpg",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  role: "Software Development & Staffing",
+  avatar: "/images/sofrix-black-3.jpg",
+  company: "Sofrix",
+  languages: [], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter = {
   display: true,
-  title: <>Subscribe to {person.firstName}'s Newsletter</>,
+  title: <>Subscribe to Our Newsletter</>,
   description: (
     <>
-      I occasionally write about design, technology, and share thoughts on the intersection of
-      creativity and engineering.
+      We occasionally write about technology trends, AI innovations, and share insights on software development best practices.
     </>
   ),
 };
@@ -50,21 +49,20 @@ const social = [
 
 const home = {
   label: "Home",
-  title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Design engineer and builder</>,
+  title: `${person.firstName} - Premium Software Solutions`,
+  description: `${person.company} provides world-class software development and staffing services`,
+  headline: <>Artificial Intelligence + Engineering Excellence</>,
   subline: (
     <>
-      I'm Selene, a design engineer at <InlineCode>FLY</InlineCode>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      We're Sofrix, a software development company that believes smarter software creates stronger businesses.
     </>
   ),
 };
 
 const about = {
   label: "About",
-  title: "About me",
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  title: "About Sofrix",
+  description: `Learn about ${person.company}, premium software development and staffing services`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -78,55 +76,56 @@ const about = {
   },
   intro: {
     display: true,
-    title: "Introduction",
+    title: "Our Story",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Sofrix emerged from a vision to deliver premium technology solutions differently. By partnering U.S. 
+        product managers with exceptional global engineering talent, we provide world-class software 
+        development and staffing services at competitive rates. Our dual expertise in custom solutions 
+        and resource augmentation gives businesses the technical capabilities they need to scale efficiently.
       </>
     ),
   },
   work: {
     display: true, // set to false to hide this section
-    title: "Work Experience",
+    title: "Our Services",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Custom Software Development",
+        timeframe: "Core Service",
+        role: "End-to-End Solutions",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            We build tailored software solutions that address your unique business challenges, 
+            from initial concept to deployment and maintenance.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Our expertise spans web applications, mobile development, AI integration, and 
+            enterprise systems that scale with your business.
           </>,
         ],
         images: [
           // optional: leave the array empty if you don't want to display images
           {
             src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
+            alt: "Software Development",
             width: 16,
             height: 9,
           },
         ],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "Technical Staffing",
+        timeframe: "Core Service",
+        role: "Talent Augmentation",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            We connect businesses with exceptional engineering talent to augment your team, 
+            providing the technical capabilities needed to scale efficiently.
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Our rigorous vetting process ensures you get access to skilled professionals who 
+            integrate seamlessly with your existing workflows.
           </>,
         ],
         images: [],
@@ -135,49 +134,49 @@ const about = {
   },
   studies: {
     display: true, // set to false to hide this section
-    title: "Studies",
+    title: "Our Approach",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "AI-Driven Innovation",
+        description: <>We leverage cutting-edge AI technologies to enhance development processes and deliver smarter solutions.</>,
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "Engineering Excellence",
+        description: <>Our commitment to quality code, thorough testing, and best practices ensures reliable, maintainable software.</>,
       },
     ],
   },
   technical: {
     display: true, // set to false to hide this section
-    title: "Technical skills",
+    title: "Technical Expertise",
     skills: [
       {
-        title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
+        title: "Full-Stack Development",
+        description: <>Comprehensive development capabilities across frontend, backend, and infrastructure.</>,
         // optional: leave the array empty if you don't want to display images
         images: [
           {
             src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
+            alt: "Development image",
             width: 16,
             height: 9,
           },
           {
             src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
+            alt: "Development image",
             width: 16,
             height: 9,
           },
         ],
       },
       {
-        title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
+        title: "AI Integration",
+        description: <>Transforming business challenges into opportunities through strategic AI implementation.</>,
         // optional: leave the array empty if you don't want to display images
         images: [
           {
             src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
+            alt: "AI integration image",
             width: 16,
             height: 9,
           },
@@ -189,24 +188,53 @@ const about = {
 
 const blog = {
   label: "Blog",
-  title: "Writing about design and tech...",
-  description: `Read what ${person.name} has been up to recently`,
+  title: "Insights & Updates",
+  description: `Read the latest from ${person.company}`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
 };
 
 const work = {
   label: "Work",
-  title: "My projects",
-  description: `Design and dev projects by ${person.name}`,
+  title: "Our Solutions & Expertise",
+  description: `Discover how ${person.company} delivers exceptional software solutions and technical talent to help businesses thrive in the digital landscape`,
+  intro: {
+    display: true,
+    title: "How We Work",
+    description: (
+      <>
+        At Sofrix, we combine technical excellence with business acumen to deliver solutions that drive real value. 
+        Our dual expertise in custom software development and technical staffing allows us to provide the right 
+        approach for your specific needs - whether that's a complete software solution or augmenting your team 
+        with specialized talent.
+      </>
+    ),
+  },
+  expertise: [
+    {
+      title: "Custom Software Development",
+      description: "End-to-end solutions tailored to your unique business challenges",
+      areas: ["Web Applications", "Mobile Development", "AI Integration", "Enterprise Systems"]
+    },
+    {
+      title: "Technical Staffing",
+      description: "Connect with exceptional engineering talent to augment your team",
+      areas: ["Senior Developers", "Product Managers", "DevOps Engineers", "AI Specialists"]
+    },
+    {
+      title: "Technology Consulting",
+      description: "Strategic guidance to optimize your technology investments",
+      areas: ["Technical Architecture", "Digital Transformation", "Process Optimization", "Technology Selection"]
+    }
+  ],
   // Create new project pages by adding a new .mdx file to app/blog/posts
   // All projects will be listed on the /home and /work routes
 };
 
 const gallery = {
   label: "Gallery",
-  title: "My photo gallery",
-  description: `A photo collection by ${person.name}`,
+  title: "Project Gallery",
+  description: `A showcase of ${person.company}'s work`,
   // Images from https://pexels.com
   images: [
     {
@@ -282,4 +310,36 @@ const gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+const contact = {
+  label: "Contact",
+  title: "Contact Us",
+  description: `Get in touch with ${person.company} for your software development and staffing needs`,
+  intro: {
+    display: true,
+    title: "Let's Connect",
+    description: (
+      <>
+        We're always interested in discussing new projects, creative ideas, or opportunities to be part of your vision. 
+        Whether you need custom software development, technical staffing, or just want to say hello, we'd love to hear from you.
+      </>
+    ),
+  },
+  contactInfo: {
+    email: "info@sofrix.com",
+    phone: "+1 (555) 123-4567",
+    address: "2219 Main St. Santa Monica, CA 90405",
+    hours: "Monday - Friday: 9:00 AM - 6:00 PM PST"
+  }
+};
+
+export {
+  person,
+  social,
+  newsletter,
+  home,
+  about,
+  blog,
+  work,
+  gallery,
+  contact,
+};

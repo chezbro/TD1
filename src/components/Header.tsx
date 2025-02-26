@@ -7,7 +7,7 @@ import { Fade, Flex, Line, ToggleButton } from "@/once-ui/components";
 import styles from "@/components/Header.module.scss";
 
 import { routes, display } from "@/app/resources";
-import { person, home, about, blog, work, gallery } from "@/app/resources/content";
+import { person, home, about, blog, work, gallery, contact } from "@/app/resources/content";
 
 type TimeDisplayProps = {
   timeZone: string;
@@ -38,6 +38,24 @@ const TimeDisplay: React.FC<TimeDisplayProps> = ({ timeZone, locale = "en-GB" })
   }, [timeZone, locale]);
 
   return <>{currentTime}</>;
+};
+
+// Online status indicator component
+const OnlineStatus: React.FC = () => {
+  return (
+    <Flex gap="8" vertical="center">
+      <div 
+        style={{ 
+          width: '10px', 
+          height: '10px', 
+          borderRadius: '50%', 
+          backgroundColor: '#4CAF50', 
+          display: 'inline-block' 
+        }} 
+      />
+      <span>We're Online</span>
+    </Flex>
+  );
 };
 
 export default TimeDisplay;
@@ -79,14 +97,14 @@ export const Header = () => {
                 <>
                   <ToggleButton
                     className="s-flex-hide"
-                    prefixIcon="person"
+                    prefixIcon="globe"
                     href="/about"
                     label={about.label}
                     selected={pathname === "/about"}
                   />
                   <ToggleButton
                     className="s-flex-show"
-                    prefixIcon="person"
+                    prefixIcon="globe"
                     href="/about"
                     selected={pathname === "/about"}
                   />
@@ -126,20 +144,20 @@ export const Header = () => {
                   />
                 </>
               )}
-              {routes["/gallery"] && (
+              {routes["/contact"] && (
                 <>
                   <ToggleButton
                     className="s-flex-hide"
-                    prefixIcon="gallery"
-                    href="/gallery"
-                    label={gallery.label}
-                    selected={pathname.startsWith("/gallery")}
+                    prefixIcon="mail"
+                    href="/contact"
+                    label={contact.label}
+                    selected={pathname === "/contact"}
                   />
                   <ToggleButton
                     className="s-flex-show"
-                    prefixIcon="gallery"
-                    href="/gallery"
-                    selected={pathname.startsWith("/gallery")}
+                    prefixIcon="mail"
+                    href="/contact"
+                    selected={pathname === "/contact"}
                   />
                 </>
               )}
@@ -154,7 +172,7 @@ export const Header = () => {
             textVariant="body-default-s"
             gap="20"
           >
-            <Flex hide="s">{display.time && <TimeDisplay timeZone={person.location} />}</Flex>
+            <Flex hide="s"><OnlineStatus /></Flex>
           </Flex>
         </Flex>
       </Flex>

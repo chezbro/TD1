@@ -1,4 +1,4 @@
-import { Column, Flex, Heading } from "@/once-ui/components";
+import { Column, Flex, Heading, Text } from "@/once-ui/components";
 import { Mailchimp } from "@/components";
 import { Posts } from "@/components/blog/Posts";
 import { baseURL } from "@/app/resources";
@@ -35,7 +35,7 @@ export async function generateMetadata() {
 
 export default function Blog() {
   return (
-    <Column maxWidth="s">
+    <Column maxWidth="m">
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -58,13 +58,39 @@ export default function Blog() {
           }),
         }}
       />
-      <Heading marginBottom="l" variant="display-strong-s">
-        {blog.title}
-      </Heading>
-      <Column fillWidth flex={1}>
-        <Posts range={[1, 3]} thumbnail />
-        <Posts range={[4]} columns="2" />
+      <Flex direction="column" gap="m" marginBottom="xl">
+        <Heading variant="display-strong-s">
+          {blog.title}
+        </Heading>
+        <Text variant="body-default-l" onBackground="neutral-weak">
+          Stay updated with the latest insights, industry trends, and technical expertise from our team.
+        </Text>
+      </Flex>
+      
+      {/* Featured Posts Section */}
+      <Column fillWidth marginBottom="xl">
+        <Heading variant="heading-strong-m" marginBottom="l">
+          Featured Articles
+        </Heading>
+        <Posts range={[1, 1]} columns="1" thumbnail />
       </Column>
+      
+      {/* Latest Posts Grid */}
+      <Column fillWidth marginBottom="xl">
+        <Heading variant="heading-strong-m" marginBottom="l">
+          Latest Articles
+        </Heading>
+        <Posts range={[2]} columns="3" thumbnail />
+      </Column>
+      
+      {/* Technology Insights Section */}
+      <Column fillWidth marginBottom="xl">
+        <Heading variant="heading-strong-m" marginBottom="l">
+          Technology Insights
+        </Heading>
+        <Posts range={[1, 3]} columns="2" thumbnail />
+      </Column>
+      
       {newsletter.display && <Mailchimp newsletter={newsletter} />}
     </Column>
   );

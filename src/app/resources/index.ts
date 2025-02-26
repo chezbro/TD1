@@ -1,6 +1,5 @@
 // import a pre-defined template for config and content options
 export {
-  routes,
   protectedRoutes,
   effects,
   style,
@@ -8,6 +7,7 @@ export {
   mailchimp,
   baseURL,
 } from "@/app/resources/config";
+
 export {
   person,
   social,
@@ -17,4 +17,15 @@ export {
   blog,
   work,
   gallery,
+  contact,
 } from "@/app/resources/content";
+
+// Define routes directly in this file
+export const routes = {
+  "/": true,
+  "/about": true,
+  "/work": true,
+  "/blog": true,
+  "/gallery": false,
+  "/contact": true,
+};

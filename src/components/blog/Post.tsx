@@ -9,7 +9,26 @@ interface PostProps {
   thumbnail: boolean;
 }
 
+// Array of dummy images for posts that don't have an image
+const dummyImages = [
+  "/images/projects/project-01/cover-01.jpg",
+  "/images/projects/project-01/cover-02.jpg",
+  "/images/projects/project-01/cover-03.jpg",
+  "/images/projects/project-01/cover-04.jpg",
+  "/images/projects/project-01/image-01.jpg",
+  "/images/projects/project-01/image-02.jpg",
+];
+
 export default function Post({ post, thumbnail }: PostProps) {
+  // Get a consistent dummy image based on the post slug
+  const getDummyImage = () => {
+    const index = post.slug.length % dummyImages.length;
+    return dummyImages[index];
+  };
+
+  // Use post image if available, otherwise use a dummy image
+  const imageUrl = post.metadata.image || getDummyImage();
+
   return (
     <SmartLink
       fillWidth
@@ -18,40 +37,41 @@ export default function Post({ post, thumbnail }: PostProps) {
       key={post.slug}
       href={`/blog/${post.slug}`}
     >
-      <Flex
+      <Column 
         position="relative"
-        mobileDirection="column"
         fillWidth
-        paddingY="12"
-        paddingX="16"
-        gap="32"
+        gap="16"
+        border="neutral-alpha-weak"
+        radius="m"
+        overflow="hidden"
       >
-        {post.metadata.image && thumbnail && (
+        {thumbnail && (
           <SmartImage
             priority
-            maxWidth={20}
+            fillWidth
             className={styles.image}
-            sizes="640px"
-            border="neutral-alpha-weak"
+            sizes="(max-width: 768px) 100vw, 33vw"
             cursor="interactive"
-            radius="m"
-            src={post.metadata.image}
+            src={imageUrl}
             alt={"Thumbnail of " + post.metadata.title}
             aspectRatio="16 / 9"
           />
         )}
-        <Column position="relative" fillWidth gap="8" vertical="center">
-          <Heading as="h2" variant="heading-strong-l" wrap="balance">
+        <Column position="relative" fillWidth gap="8" paddingX="24" paddingBottom="24">
+          {post.metadata.tag && (
+            <Tag label={post.metadata.tag} variant="neutral" />
+          )}
+          <Heading as="h2" variant="heading-strong-m" wrap="balance">
             {post.metadata.title}
           </Heading>
+          <Text variant="body-default-s" onBackground="neutral-weak" marginBottom="8">
+            {post.metadata.summary}
+          </Text>
           <Text variant="label-default-s" onBackground="neutral-weak">
             {formatDate(post.metadata.publishedAt, false)}
           </Text>
-          {post.metadata.tag && (
-            <Tag className="mt-8" label={post.metadata.tag} variant="neutral" />
-          )}
         </Column>
-      </Flex>
+      </Column>
     </SmartLink>
   );
 }
