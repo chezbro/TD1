@@ -11,12 +11,16 @@ import { Source_Code_Pro } from "next/font/google";
 
 import { person, home } from "@/app/resources/content";
 import { Background, Column, Flex, ToastProvider } from "@/once-ui/components";
+import Head from "next/head";
 
 export async function generateMetadata() {
   return {
     metadataBase: new URL(`https://${baseURL}`),
     title: home.title,
     description: home.description,
+    icons: {
+      icon: '/images/favicon-big.png',
+    },
     openGraph: {
       title: `${person.firstName}'s Portfolio`,
       description: "Portfolio website showcasing my work.",
