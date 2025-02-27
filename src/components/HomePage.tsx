@@ -9,6 +9,7 @@ import { home, about, person, newsletter } from "@/app/resources/content";
 import { Mailchimp, VideoModal } from "@/components";
 import { MobileStyles } from "@/components/MobileStyles";
 import Link from "next/link";
+import { LogoScroller } from "@/components/LogoScroller";
 
 // Dynamically import client components instead of server components
 const ProjectsClient = dynamic(
@@ -143,9 +144,17 @@ export function HomePage() {
         {routes["/work"] && <ProjectsClient range={projectsRangeOne} projects={[]} />}
       </RevealFx>
 
+      {/* Companies we've worked with section */}
+      <RevealFx translateY="16" delay={0.7}>
+        <LogoScroller 
+          title="Companies We've Worked With"             
+          description="We're proud to have collaborated with these amazing organizations on innovative software solutions."
+        />
+      </RevealFx>
+
       {/* Features Section with Images */}
       {home.features?.display && (
-        <RevealFx translateY="16" delay={0.7}>
+        <RevealFx translateY="16" delay={0.8}>
           <Column gap="l" paddingY="m">
             <Column maxWidth="s" gap="m" paddingBottom="m">
               <Heading as="h2" variant="display-strong-m" wrap="balance">
@@ -193,7 +202,7 @@ export function HomePage() {
 
       {/* Benefits Section with Video and Images */}
       {home.benefits?.display && (
-        <RevealFx translateY="16" delay={0.8}>
+        <RevealFx translateY="16" delay={0.9}>
           <Column gap="l" paddingY="m">
             <Column maxWidth="s" gap="m" paddingBottom="m">
               <Heading as="h2" variant="display-strong-m" wrap="balance">

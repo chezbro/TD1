@@ -4,6 +4,7 @@ import { Projects } from "@/components/work/Projects";
 import { baseURL } from "@/app/resources";
 import { person, work } from "@/app/resources/content";
 import { MobileStyles } from "@/components/MobileStyles";
+import { LogoScroller } from "@/components/LogoScroller";
 import Image from "next/image";
 
 export async function generateMetadata() {
@@ -84,6 +85,14 @@ export default function Work() {
           </Text>
         </Column>
       )}
+      
+      {/* Companies we've worked with section */}
+      <Column fillWidth marginBottom="40">
+        <LogoScroller 
+          title="Companies We've Worked With" 
+          description="We're proud to have partnered with these innovative companies to deliver exceptional software solutions."
+        />
+      </Column>
       
       {/* Expertise Areas */}
       {work.expertise && (
