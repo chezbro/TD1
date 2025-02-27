@@ -69,18 +69,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                   style={{ margin: "0", width: "fit-content" }}
                   href={href}
                 >
-                  <Text variant="body-default-s">Read development case study</Text>
+                  <Text variant="body-default-s">See More</Text>
                 </SmartLink>
               )}
-              {link && (
-                <SmartLink
-                  suffixIcon="arrowUpRightFromSquare"
-                  style={{ margin: "0", width: "fit-content" }}
-                  href={link}
-                >
-                  <Text variant="body-default-s">View software solution</Text>
-                </SmartLink>
-              )}
+
             </Flex>
           </Column>
         )}

@@ -351,7 +351,7 @@ export function HomePage() {
               </Text>
             </Column>
             
-            <div className="expertise-grid">
+            <div className="showcase-grid">
               {home.showcase.gallery.map((item, index) => (
                 <div key={`gallery-${index}`} className="expertise-card">
                   <div className="expertise-image-container">

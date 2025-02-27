@@ -17,6 +17,14 @@ export function MobileStyles() {
         width: 100%;
       }
       
+      /* Ensure showcase grid always has 3 columns */
+      .showcase-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        width: 100%;
+      }
+      
       .expertise-card {
         display: flex;
         flex-direction: column;
@@ -111,7 +119,9 @@ export function MobileStyles() {
       }
       
       .testimonial-card p,
-      .testimonial-card h3 {
+      .testimonial-card h3,
+      .testimonial-card span,
+      .testimonial-card div {
         color: #000 !important;
       }
       
@@ -302,12 +312,17 @@ export function MobileStyles() {
         .resource-grid {
           grid-template-columns: repeat(2, 1fr);
         }
+        
+        .showcase-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
       }
       
       @media (max-width: 768px) {
         .expertise-grid,
         .team-grid,
-        .resource-grid {
+        .resource-grid,
+        .showcase-grid {
           grid-template-columns: 1fr;
           gap: 1.5rem;
         }

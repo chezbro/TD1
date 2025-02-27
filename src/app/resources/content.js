@@ -2,7 +2,7 @@ import { InlineCode } from "@/once-ui/components";
 
 const person = {
   firstName: "Sofrix",
-  lastName: "Development",
+  lastName: "",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
@@ -148,16 +148,7 @@ const home = {
           height: 9,
         },
       },
-      {
-        title: "Technology Expertise",
-        description: <>Our teams stay at the forefront of technology trends, ensuring your solutions leverage the most effective tools and approaches.</>,
-        image: {
-          src: "/images/gallery/img-07.jpg",
-          alt: "Technology Expertise",
-          width: 16,
-          height: 9,
-        },
-      },
+
     ],
   },
   testimonials: {
@@ -410,7 +401,7 @@ const about = {
     subItems: false,
   },
   avatar: {
-    display: true,
+    display: false,
   },
   calendar: {
     display: true,

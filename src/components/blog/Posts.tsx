@@ -10,7 +10,7 @@ interface PostsProps {
   tag?: string;
 }
 
-export async function Posts({ range, columns = "1", thumbnail = false, tag }: PostsProps) {
+export async function Posts({ range = [1, 3], columns = "1", thumbnail = false, tag }: PostsProps) {
   const allBlogs = getPosts(["src", "app", "blog", "posts"]);
   
   return (

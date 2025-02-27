@@ -26,9 +26,9 @@ const mockProjects: ProjectData[] = [
   {
     slug: "mock-project-1",
     metadata: {
-      title: "AI-Powered Business Solutions",
+      title: "Senior Engineer Level Development",
       publishedAt: new Date().toISOString(),
-      summary: "Leveraging artificial intelligence to transform business operations and drive growth.",
+      summary: "We leverage rockstar engineers and AI to transform business operations and drive growth.",
       images: ["/images/projects/project-01/cover-01.jpg"],
       team: [{ avatar: "/images/sofrix-black-3.jpg" }],
       link: "#"
@@ -38,7 +38,7 @@ const mockProjects: ProjectData[] = [
   {
     slug: "mock-project-2",
     metadata: {
-      title: "Enterprise Software Development",
+      title: "Senior Level Development",
       publishedAt: new Date().toISOString(),
       summary: "Building scalable, secure, and reliable software solutions for enterprise needs.",
       images: ["/images/projects/project-01/cover-02.jpg"],
