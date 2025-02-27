@@ -64,7 +64,7 @@ export function PostsClient({ posts = mockPosts, range, columns = "1", thumbnail
 
   // Determine which blogs to display based on range
   const displayedBlogs = range
-    ? filteredBlogs.slice(range[0] - 1, range.length === 2 ? range[1] : filteredBlogs.length)
+    ? filteredBlogs.slice(range[0] - 1, range[1])
     : filteredBlogs;
 
   // Set appropriate gap based on columns

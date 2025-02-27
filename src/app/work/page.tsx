@@ -3,6 +3,8 @@ import { Column, Flex, Heading, Text, Card } from "@/once-ui/components";
 import { Projects } from "@/components/work/Projects";
 import { baseURL } from "@/app/resources";
 import { person, work } from "@/app/resources/content";
+import { MobileStyles } from "@/components/MobileStyles";
+import Image from "next/image";
 
 export async function generateMetadata() {
   const title = work.title;
@@ -35,6 +37,13 @@ export async function generateMetadata() {
 
 export default function Work() {
   let allProjects = getPosts(["src", "app", "work", "projects"]);
+
+  // Define images for expertise areas
+  const expertiseImages = [
+    "/images/projects/project-01/cover-01.jpg",
+    "/images/projects/project-01/cover-02.jpg",
+    "/images/projects/project-01/cover-03.jpg",
+  ];
 
   return (
     <Column maxWidth="m">
@@ -82,29 +91,38 @@ export default function Work() {
           <Heading as="h2" variant="heading-strong-xl">
             Our Areas of Expertise
           </Heading>
-          <Flex gap="l" wrap horizontal="space-between">
+          <div className="expertise-grid">
             {work.expertise.map((area, index) => (
-              <div key={index} style={{ flex: '1 1 300px', minWidth: '300px', maxWidth: '400px' }}>
-                <Card>
-                  <Column gap="m" padding="l">
-                    <Heading as="h3" variant="heading-strong-l">
-                      {area.title}
-                    </Heading>
-                    <Text variant="body-default-m" onBackground="neutral-weak">
-                      {area.description}
-                    </Text>
-                    {area.areas && (
-                      <Column gap="xs">
-                        {area.areas.map((item, idx) => (
-                          <Text key={idx} variant="body-default-s">• {item}</Text>
-                        ))}
-                      </Column>
-                    )}
-                  </Column>
-                </Card>
+              <div key={index} className="expertise-card">
+                <div className="expertise-image-container">
+                  <Image 
+                    src={expertiseImages[index] || "/images/projects/project-01/cover-01.jpg"} 
+                    alt={area.title}
+                    width={600}
+                    height={400}
+                    className="expertise-image"
+                  />
+                </div>
+                <div className="expertise-content">
+                  <Heading as="h3" variant="heading-strong-l">
+                    {area.title}
+                  </Heading>
+                  <Text variant="body-default-m" onBackground="neutral-weak" className="expertise-description">
+                    {area.description}
+                  </Text>
+                  {area.areas && (
+                    <ul className="expertise-list">
+                      {area.areas.map((item, idx) => (
+                        <li key={idx} className="expertise-list-item">
+                          <Text variant="body-default-s">{item}</Text>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
               </div>
             ))}
-          </Flex>
+          </div>
         </Column>
       )}
       
@@ -119,6 +137,7 @@ export default function Work() {
       </Column>
       
       <Projects />
+      <MobileStyles />
     </Column>
   );
 }

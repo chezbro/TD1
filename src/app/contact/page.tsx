@@ -29,7 +29,7 @@ export function generateMetadata(): Metadata {
 
 export default function ContactPage() {
   return (
-    <Column gap="xl">
+    <Column gap="xl" className="contact-page">
       <Column gap="l">
         <Heading variant="display-strong-xl">{contact.title}</Heading>
         {contact.intro.display && (
@@ -40,7 +40,7 @@ export default function ContactPage() {
         )}
       </Column>
 
-      <Grid columns={2} gap="l">
+      <Grid columns={2} mobileColumns={1} gap="l">
         {/* Contact Form */}
         <Card padding="l" shadow="m" border="neutral-medium" radius="m">
           <Column gap="l">
@@ -127,7 +127,7 @@ export default function ContactPage() {
 
             <Column gap="m">
               <Heading variant="heading-strong-s">Connect With Us</Heading>
-              <Flex gap="m">
+              <Flex gap="m" className="social-links-container">
                 <a href="#" className="social-link" style={{ textDecoration: 'none' }}>
                   <Flex 
                     radius="m" 

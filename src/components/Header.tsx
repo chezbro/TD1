@@ -79,7 +79,7 @@ export const Header = () => {
       >
         {/* SOFRIX Logo */}
         <Flex 
-          className={styles.logo} 
+          className={`${styles.logo} s-flex-hide`} 
           position="absolute" 
           left="24" 
           style={{ 

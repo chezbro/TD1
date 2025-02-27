@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Avatar,
   Button,
@@ -13,38 +15,24 @@ import {
 import { baseURL } from "@/app/resources";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
-import { person, about, social } from "@/app/resources/content";
-
-export async function generateMetadata() {
-  const title = about.title;
-  const description = about.description;
-  const ogImage = `https://${baseURL}/og?title=${encodeURIComponent(title)}`;
-
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      type: "website",
-      url: `https://${baseURL}/about`,
-      images: [
-        {
-          url: ogImage,
-          alt: title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [ogImage],
-    },
-  };
-}
+import { person, about, social, home } from "@/app/resources/content";
+import React, { useState } from "react";
+import Image from "next/image";
+import { MobileStyles } from "@/components/MobileStyles";
 
 export default function About() {
+  const [activeCategory, setActiveCategory] = useState("All");
+  
+  // Filter engineers based on active category
+  const filteredEngineers = React.useMemo(() => {
+    if (activeCategory === "All") {
+      return home.resourceAugmentation?.engineers || [];
+    }
+    return (home.resourceAugmentation?.engineers || []).filter(
+      (engineer) => engineer.expertise === activeCategory
+    );
+  }, [activeCategory]);
+  
   const structure = [
     {
       title: about.intro.title,
@@ -65,6 +53,16 @@ export default function About() {
       title: about.technical.title,
       display: about.technical.display,
       items: about.technical.skills.map((skill) => skill.title),
+    },
+    {
+      title: home.teamMembers?.title || "Team Members",
+      display: home.teamMembers?.display || false,
+      items: [],
+    },
+    {
+      title: home.resourceAugmentation?.title || "Resource Augmentation",
+      display: home.resourceAugmentation?.display || false,
+      items: [],
     },
   ];
   return (
@@ -115,12 +113,9 @@ export default function About() {
             horizontal="center"
           >
             <Avatar src={person.avatar} size="xl" />
-            <Flex gap="8" vertical="center">
-              <Icon onBackground="accent-weak" name="globe" />
-              {person.location}
-            </Flex>
+            <Text className="s-text-center">{person.location}</Text>
             {person.languages.length > 0 && (
-              <Flex wrap gap="8">
+              <Flex wrap gap="8" horizontal="center">
                 {person.languages.map((language, index) => (
                   <Tag key={index} size="l">
                     {language}
@@ -137,6 +132,7 @@ export default function About() {
             minHeight="160"
             vertical="center"
             marginBottom="32"
+            className="s-padding-x-m"
           >
             {about.calendar.display && (
               <Flex
@@ -163,11 +159,11 @@ export default function About() {
                 />
               </Flex>
             )}
-            <Heading className={styles.textAlign} variant="display-strong-xl">
+            <Heading className={`${styles.textAlign} s-text-size-m`} variant="display-strong-xl">
               {person.name}
             </Heading>
             <Text
-              className={styles.textAlign}
+              className={`${styles.textAlign} s-text-size-xs`}
               variant="display-default-xs"
               onBackground="neutral-weak"
             >
@@ -204,17 +200,17 @@ export default function About() {
           </Column>
 
           {about.intro.display && (
-            <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl">
+            <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl" className="s-padding-x-m s-text-size-s">
               {about.intro.description}
             </Column>
           )}
 
           {about.work.display && (
             <>
-              <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="m">
+              <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="m" className="s-padding-x-m">
                 {about.work.title}
               </Heading>
-              <Column fillWidth gap="l" marginBottom="40">
+              <Column fillWidth gap="l" marginBottom="40" className="s-padding-x-m">
                 {about.work.experiences.map((experience, index) => (
                   <Column key={`${experience.company}-${experience.role}-${index}`} fillWidth>
                     <Flex fillWidth horizontal="space-between" vertical="end" marginBottom="4">
@@ -341,6 +337,117 @@ export default function About() {
           )}
         </Column>
       </Flex>
+      
+      {/* Team Members Section */}
+      {home.teamMembers?.display && (
+        <Column gap="l" paddingY="m">
+          <Column maxWidth="s" gap="m" paddingBottom="m">
+            <Heading as="h2" id={home.teamMembers.title} variant="display-strong-m" wrap="balance">
+              {home.teamMembers.title}
+            </Heading>
+            <Text variant="body-default-l" wrap="balance" onBackground="neutral-weak">
+              {home.teamMembers.description}
+            </Text>
+          </Column>
+          
+          <div className="team-grid">
+            {home.teamMembers.members.map((member, index) => (
+              <div key={`team-${index}`} className="team-card">
+                <div className="team-image-container">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    width={300}
+                    height={300}
+                    className="team-image"
+                    quality={90}
+                  />
+                </div>
+                <div className="team-content">
+                  <Heading as="h3" variant="heading-strong-l">
+                    {member.name}
+                  </Heading>
+                  <Text variant="body-strong-m" onBackground="neutral-weak">
+                    {member.title}
+                  </Text>
+                  <Text variant="body-default-m" onBackground="neutral-weak">
+                    {member.bio}
+                  </Text>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Column>
+      )}
+
+      {/* Resource Augmentation Section */}
+      {home.resourceAugmentation?.display && (
+        <Column gap="l" paddingY="m">
+          <Column maxWidth="s" gap="m" paddingBottom="m">
+            <Heading as="h2" id={home.resourceAugmentation.title} variant="display-strong-m" wrap="balance">
+              {home.resourceAugmentation.title}
+            </Heading>
+            <Text variant="body-default-l" wrap="balance" onBackground="neutral-weak">
+              {home.resourceAugmentation.description}
+            </Text>
+          </Column>
+          
+          {/* Filter Buttons */}
+          <div className="filter-buttons">
+            {home.resourceAugmentation.categories.map((category, index) => (
+              <button
+                key={`category-${index}`}
+                className={`filter-button ${activeCategory === category ? 'active' : ''}`}
+                onClick={() => setActiveCategory(category)}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+          
+          {/* Engineers Grid */}
+          <div className="resource-grid">
+            {filteredEngineers.map((engineer, index) => (
+              <div key={`engineer-${index}`} className="resource-card">
+                <div className="resource-image-container">
+                  <Image
+                    src={engineer.image}
+                    alt={engineer.name}
+                    width={300}
+                    height={300}
+                    className="resource-image"
+                    quality={90}
+                  />
+                </div>
+                <div className="resource-content">
+                  <div>
+                    <span className="resource-expertise">{engineer.expertise}</span>
+                    <Heading as="h3" variant="heading-strong-l">
+                      {engineer.name}
+                    </Heading>
+                  </div>
+                  <div>
+                    <Text variant="body-default-s" onBackground="neutral-weak">
+                      Skills:
+                    </Text>
+                    <div className="resource-skills">
+                      {engineer.skills.map((skill, skillIndex) => (
+                        <span key={`skill-${skillIndex}`} className="resource-skill">
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="resource-experience">
+                    Experience: {engineer.experience}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Column>
+      )}
+      <MobileStyles />
     </Column>
   );
 }

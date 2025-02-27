@@ -10,4 +10,26 @@
 }
 .social-link:hover {
   transform: translateY(-3px);
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  .social-link {
+    display: inline-flex;
+  }
+  
+  /* Improve card padding on mobile */
+  [class*="card"] {
+    padding: var(--static-space-16) !important;
+  }
+  
+  /* Adjust contact page spacing on mobile */
+  .contact-page {
+    padding: var(--static-space-16);
+  }
+  
+  /* Center social links on mobile */
+  .social-links-container {
+    justify-content: center;
+  }
 } 
