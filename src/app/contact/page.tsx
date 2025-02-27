@@ -11,6 +11,7 @@ import {
   Button,
   Textarea,
   Input,
+  RevealFx,
 } from "@/once-ui/components";
 
 import { contact, person } from "@/app/resources/content";
@@ -18,10 +19,10 @@ import "./contact.css";
 
 export function generateMetadata(): Metadata {
   return {
-    title: contact.title,
+    title: contact.title || "Contact Us",
     description: contact.description,
     openGraph: {
-      title: contact.title,
+      title: contact.title || "Contact Us",
       description: contact.description,
     }
   };
@@ -29,146 +30,166 @@ export function generateMetadata(): Metadata {
 
 export default function ContactPage() {
   return (
-    <Column gap="xl" className="contact-page">
-      <Column gap="l">
-        <Heading variant="display-strong-xl">{contact.title}</Heading>
-        {contact.intro.display && (
-          <Column gap="m">
-            <Heading variant="display-strong-l">{contact.intro.title}</Heading>
-            <Text variant="body-default-l">{contact.intro.description}</Text>
-          </Column>
-        )}
-      </Column>
+    <div className="contact-container">
+      {/* Hero Section with Angled Design */}
+      <div className="contact-hero">
+        <div className="hero-content">
+          <RevealFx>
+            <Heading variant="display-strong-xl" className="hero-title">{contact.title || "Get in Touch"}</Heading>
+            {contact.intro.display && (
+              <Text variant="body-default-l" className="hero-description">{contact.intro.description}</Text>
+            )}
+          </RevealFx>
+        </div>
+        <div className="hero-shape"></div>
+      </div>
 
-      <Grid columns={2} mobileColumns={1} gap="l">
-        {/* Contact Form */}
-        <Card padding="l" shadow="m" border="neutral-medium" radius="m">
-          <Column gap="l">
-            <Heading variant="display-strong-m">Send Us a Message</Heading>
-            <Column gap="m">
-              <Input
-                id="name"
-                label="Name"
-                placeholder={contact.form?.namePlaceholder || ""}
-                required
-              />
-              <Input
-                id="email"
-                label="Email"
-                type="email"
-                placeholder={contact.form?.emailPlaceholder || ""}
-                required
-              />
-              <Input
-                id="subject"
-                label="Subject"
-                placeholder={contact.form?.subjectPlaceholder || ""}
-                required
-              />
-              <Textarea
-                id="message"
-                label="Message"
-                placeholder={contact.form?.messagePlaceholder || ""}
-                rows={6}
-                required
-              />
-              <Flex horizontal="start">
-                <Button variant="primary" size="m">
-                  Send Message
+      {/* Main Content */}
+      <div className="contact-main">
+        {/* Left Side - Contact Form */}
+        <div className="contact-form-container">
+          <RevealFx delay={0.1}>
+            <Card padding="xl" shadow="l" border="neutral-weak" radius="l" className="contact-card">
+              <Column gap="l">
+                <Heading variant="display-strong-m" className="section-title" color="neutral-strong">Send Us a Message</Heading>
+                
+                <div className="form-grid">
+                  <div className="form-group">
+                    <Input
+                      id="name"
+                      label="Name"
+                      required
+                    />
+                  </div>
+                  <div className="form-group">
+                    <Input
+                      id="email"
+                      label="Email"
+                      type="email"
+                      required
+                    />
+                  </div>
+                </div>
+                
+                <Input
+                  id="subject"
+                  label="Subject"
+                  required
+                />
+                
+                <Textarea
+                  id="message"
+                  label="Message"
+                  rows={6}
+                  required
+                />
+                
+                <Button variant="primary" size="l" className="submit-button">
+                  <Flex gap="s" vertical="center">
+                    <Icon name="send" size="s" onBackground="brand-strong" />
+                    <Text>Send Message</Text>
+                  </Flex>
                 </Button>
-              </Flex>
-            </Column>
-          </Column>
-        </Card>
-
-        {/* Contact Information */}
-        <Card padding="l" shadow="m" border="neutral-medium" radius="m">
-          <Column gap="l">
-            <Heading variant="display-strong-m">Contact Information</Heading>
-            <Column gap="l">
-              <Column gap="s">
-                <Text variant="heading-strong-s" color="brand-strong">Email</Text>
-                <Text variant="body-default-m">
-                  <a 
-                    href={`mailto:${contact.contactInfo.email}`} 
-                    className="contact-link"
-                    style={{ textDecoration: 'none', color: 'inherit' }}
-                  >
-                    {contact.contactInfo.email}
-                  </a>
-                </Text>
               </Column>
-
-              <Column gap="s">
-                <Text variant="heading-strong-s" color="brand-strong">Phone</Text>
-                <Text variant="body-default-m">
-                  <a 
-                    href={`tel:${contact.contactInfo.phone}`} 
-                    className="contact-link"
-                    style={{ textDecoration: 'none', color: 'inherit' }}
-                  >
-                    {contact.contactInfo.phone}
-                  </a>
-                </Text>
-              </Column>
-
-              <Column gap="s">
-                <Text variant="heading-strong-s" color="brand-strong">Address</Text>
-                <Text variant="body-default-m">{contact.contactInfo.address}</Text>
-              </Column>
-
-              <Column gap="s">
-                <Text variant="heading-strong-s" color="brand-strong">Business Hours</Text>
-                <Text variant="body-default-m">{contact.contactInfo.hours}</Text>
-              </Column>
-            </Column>
-
-            <Line />
-
-            <Column gap="m">
-              <Heading variant="heading-strong-s">Connect With Us</Heading>
-              <Flex gap="m" className="social-links-container">
-                <a href="#" className="social-link" style={{ textDecoration: 'none' }}>
-                  <Flex 
-                    radius="m" 
-                    background="brand-weak" 
-                    padding="m" 
-                    horizontal="center" 
-                    vertical="center"
-                    shadow="s"
-                  >
-                    <Icon name="linkedin" size="m" onBackground="brand-weak" />
-                  </Flex>
+            </Card>
+          </RevealFx>
+        </div>
+        
+        {/* Right Side - Contact Info & Map */}
+        <div className="contact-info-container">
+          <RevealFx delay={0.2}>
+            {/* Contact Quick Info */}
+            <div className="contact-info-grid">
+              <div className="info-card">
+                <Flex gap="m" align="start">
+                  <Icon name="mail" size="l" color="brand-strong" />
+                  <div className="info-content">
+                    <Text variant="heading-strong-s" color="neutral-strong">Email Us</Text>
+                    <a href={`mailto:${contact.contactInfo.email}`} className="contact-link">
+                      {contact.contactInfo.email}
+                    </a>
+                  </div>
+                </Flex>
+              </div>
+              
+              <div className="info-card">
+                <Flex gap="m" align="start">
+                  <Icon name="phone" size="l" color="brand-strong" />
+                  <div className="info-content">
+                    <Text variant="heading-strong-s" color="neutral-strong">Call Us</Text>
+                    <a href={`tel:${contact.contactInfo.phone}`} className="contact-link">
+                      {contact.contactInfo.phone}
+                    </a>
+                  </div>
+                </Flex>
+              </div>
+              
+              <div className="info-card">
+                <Flex gap="m" align="start">
+                  <Icon name="map-pin" size="l" color="brand-strong" />
+                  <div className="info-content">
+                    <Text variant="heading-strong-s" color="neutral-strong">Visit Us</Text>
+                    <Text variant="body-default-m" color="neutral-strong">{contact.contactInfo.address}</Text>
+                  </div>
+                </Flex>
+              </div>
+              
+              <div className="info-card">
+                <Flex gap="m" align="start">
+                  <Icon name="clock" size="l" color="brand-strong" />
+                  <div className="info-content">
+                    <Text variant="heading-strong-s" color="neutral-strong">Business Hours</Text>
+                    <Text variant="body-default-m" color="neutral-strong">{contact.contactInfo.hours}</Text>
+                  </div>
+                </Flex>
+              </div>
+            </div>
+            
+            {/* Map Placeholder - Removed */}
+            
+            {/* Social Links */}
+            <div className="social-section">
+              <Text variant="heading-strong-s" color="neutral-strong" align="center">Connect With Us</Text>
+              <div className="social-links">
+                <a href="#" className="social-link-circle">
+                  <Icon name="linkedin" size="m" color="brand-strong" />
                 </a>
-                <a href="#" className="social-link" style={{ textDecoration: 'none' }}>
-                  <Flex 
-                    radius="m" 
-                    background="brand-weak" 
-                    padding="m" 
-                    horizontal="center" 
-                    vertical="center"
-                    shadow="s"
-                  >
-                    <Icon name="github" size="m" onBackground="brand-weak" />
-                  </Flex>
+                <a href="#" className="social-link-circle">
+                  <Icon name="github" size="m" color="brand-strong" />
                 </a>
-                <a href="#" className="social-link" style={{ textDecoration: 'none' }}>
-                  <Flex 
-                    radius="m" 
-                    background="brand-weak" 
-                    padding="m" 
-                    horizontal="center" 
-                    vertical="center"
-                    shadow="s"
-                  >
-                    <Icon name="x" size="m" onBackground="brand-weak" />
-                  </Flex>
+                <a href="#" className="social-link-circle">
+                  <Icon name="x" size="m" color="brand-strong" />
                 </a>
-              </Flex>
-            </Column>
-          </Column>
-        </Card>
-      </Grid>
-    </Column>
+              </div>
+            </div>
+          </RevealFx>
+        </div>
+      </div>
+      
+      {/* FAQ Section */}
+      <div className="faq-section">
+        <RevealFx delay={0.3}>
+          <Heading variant="display-strong-l" className="faq-title">Frequently Asked Questions</Heading>
+          <div className="faq-grid">
+            <div className="faq-item">
+              <Heading variant="heading-strong-m">How quickly do you respond to inquiries?</Heading>
+              <Text variant="body-default-m">We typically respond to all inquiries within 24 business hours. For urgent matters, please call us directly.</Text>
+            </div>
+            <div className="faq-item">
+              <Heading variant="heading-strong-m">Do you offer remote services?</Heading>
+              <Text variant="body-default-m">Yes, we provide remote software development and consulting services to clients worldwide, with teams that can work in your time zone.</Text>
+            </div>
+            <div className="faq-item">
+              <Heading variant="heading-strong-m">What industries do you specialize in?</Heading>
+              <Text variant="body-default-m">We have expertise across multiple industries including fintech, healthcare, e-commerce, and enterprise solutions.</Text>
+            </div>
+            <div className="faq-item">
+              <Heading variant="heading-strong-m">How do you handle project pricing?</Heading>
+              <Text variant="body-default-m">We offer flexible pricing models including fixed-price projects, time and materials, and dedicated team arrangements based on your needs.</Text>
+            </div>
+          </div>
+        </RevealFx>
+      </div>
+    </div>
   );
 } 

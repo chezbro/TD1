@@ -9,6 +9,7 @@ import styles from "@/components/Header.module.scss";
 
 import { routes, display } from "@/app/resources";
 import { person, home, about, blog, work, gallery, contact } from "@/app/resources/content";
+import { TawkChat } from "@/components/TawkChat";
 
 type TimeDisplayProps = {
   timeZone: string;
@@ -43,8 +44,16 @@ const TimeDisplay: React.FC<TimeDisplayProps> = ({ timeZone, locale = "en-GB" })
 
 // Online status indicator component
 const OnlineStatus: React.FC = () => {
+  const { openChat } = TawkChat();
+  
   return (
-    <Flex gap="8" vertical="center">
+    <Flex 
+      gap="8" 
+      vertical="center" 
+      onClick={openChat}
+      style={{ cursor: 'pointer' }}
+      title="Click to chat with our team"
+    >
       <div 
         style={{ 
           width: '10px', 
