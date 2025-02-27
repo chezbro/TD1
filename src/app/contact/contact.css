@@ -1,0 +1,13 @@
+.contact-link {
+  transition: color 0.2s ease;
+  display: inline-block;
+}
+.contact-link:hover {
+  color: var(--color-brand-strong);
+}
+.social-link {
+  transition: transform 0.2s ease;
+}
+.social-link:hover {
+  transform: translateY(-3px);
+} 

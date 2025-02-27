@@ -14,27 +14,15 @@ import {
 } from "@/once-ui/components";
 
 import { contact, person } from "@/app/resources/content";
+import "./contact.css";
 
 export function generateMetadata(): Metadata {
   return {
     title: contact.title,
     description: contact.description,
-    head: {
-      style: `
-        .contact-link {
-          transition: color 0.2s ease;
-          display: inline-block;
-        }
-        .contact-link:hover {
-          color: var(--color-brand-strong);
-        }
-        .social-link {
-          transition: transform 0.2s ease;
-        }
-        .social-link:hover {
-          transform: translateY(-3px);
-        }
-      `
+    openGraph: {
+      title: contact.title,
+      description: contact.description,
     }
   };
 }
@@ -181,8 +169,6 @@ export default function ContactPage() {
           </Column>
         </Card>
       </Grid>
-
-
     </Column>
   );
 } 
