@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { cache } from "react";
 
 type Team = {
   name: string;
@@ -66,7 +67,8 @@ function getMDXData(dir: string) {
   });
 }
 
-export function getPosts(customPath = ["", "", "", ""]) {
+// Use React's cache function to memoize the results
+export const getPosts = cache((customPath = ["", "", "", ""]) => {
   const postsDir = path.join(process.cwd(), ...customPath);
   return getMDXData(postsDir);
-}
+});

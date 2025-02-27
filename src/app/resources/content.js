@@ -74,6 +74,11 @@ const about = {
     display: true,
     link: "https://cal.com",
   },
+  video: {
+    url: "https://files.catbox.moe/75yhmi.mp4", // A professional ambient music video
+    title: "About Sofrix",
+    description: "Discover how we combine technical excellence with business acumen to deliver solutions that drive real value for our clients."
+  },
   intro: {
     display: true,
     title: "Our Story",

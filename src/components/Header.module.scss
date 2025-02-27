@@ -11,6 +11,11 @@
     mask-size: 100% 100%;
 }
 
+.logo {
+    font-family: var(--font-primary);
+    letter-spacing: 1px;
+}
+
 @media (--s) {
     .position {
         top: auto;
@@ -21,5 +26,9 @@
     .mask {
         transform: rotate(180deg);
         bottom: 0;
+    }
+    
+    .logo {
+        left: var(--static-space-12) !important;
     }
 }

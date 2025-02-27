@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 import { Fade, Flex, Line, ToggleButton } from "@/once-ui/components";
 import styles from "@/components/Header.module.scss";
@@ -76,6 +77,25 @@ export const Header = () => {
         padding="8"
         horizontal="center"
       >
+        {/* SOFRIX Logo */}
+        <Flex 
+          className={styles.logo} 
+          position="absolute" 
+          left="24" 
+          style={{ 
+            top: '50%',
+            transform: 'translateY(-50%)', 
+            color: 'white', 
+            fontWeight: 'bold',
+            fontSize: '1.5rem',
+            zIndex: 10
+          }}
+        >
+          <Link href="/" style={{ color: 'inherit', textDecoration: 'none' }}>
+            SOFRIX
+          </Link>
+        </Flex>
+        
         <Flex paddingLeft="12" fillWidth vertical="center" textVariant="body-default-s">
           {display.location && <Flex hide="s">{person.location}</Flex>}
         </Flex>
@@ -148,14 +168,14 @@ export const Header = () => {
                 <>
                   <ToggleButton
                     className="s-flex-hide"
-                    prefixIcon="mail"
+                    prefixIcon="email"
                     href="/contact"
                     label={contact.label}
                     selected={pathname === "/contact"}
                   />
                   <ToggleButton
                     className="s-flex-show"
-                    prefixIcon="mail"
+                    prefixIcon="email"
                     href="/contact"
                     selected={pathname === "/contact"}
                   />
