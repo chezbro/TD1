@@ -15,10 +15,29 @@ import {
 
 import { contact, person } from "@/app/resources/content";
 
-export const metadata: Metadata = {
-  title: contact.title,
-  description: contact.description,
-};
+export function generateMetadata(): Metadata {
+  return {
+    title: contact.title,
+    description: contact.description,
+    head: {
+      style: `
+        .contact-link {
+          transition: color 0.2s ease;
+          display: inline-block;
+        }
+        .contact-link:hover {
+          color: var(--color-brand-strong);
+        }
+        .social-link {
+          transition: transform 0.2s ease;
+        }
+        .social-link:hover {
+          transform: translateY(-3px);
+        }
+      `
+    }
+  };
+}
 
 export default function ContactPage() {
   return (
@@ -42,26 +61,26 @@ export default function ContactPage() {
               <Input
                 id="name"
                 label="Name"
-                placeholder="Your name"
+                placeholder={contact.form?.namePlaceholder || ""}
                 required
               />
               <Input
                 id="email"
                 label="Email"
                 type="email"
-                placeholder="your.email@example.com"
+                placeholder={contact.form?.emailPlaceholder || ""}
                 required
               />
               <Input
                 id="subject"
                 label="Subject"
-                placeholder="What's this about?"
+                placeholder={contact.form?.subjectPlaceholder || ""}
                 required
               />
               <Textarea
                 id="message"
                 label="Message"
-                placeholder="Tell us about your project, question, or request..."
+                placeholder={contact.form?.messagePlaceholder || ""}
                 rows={6}
                 required
               />
@@ -78,78 +97,42 @@ export default function ContactPage() {
         <Card padding="l" shadow="m" border="neutral-medium" radius="m">
           <Column gap="l">
             <Heading variant="display-strong-m">Contact Information</Heading>
-            <Column gap="m">
-              <Flex gap="m" vertical="center">
-                <Flex 
-                  radius="full" 
-                  background="brand-weak" 
-                  padding="m" 
-                  horizontal="center" 
-                  vertical="center"
-                >
-                  <Icon name="email" size="m" onBackground="brand-weak" />
-                </Flex>
-                <Column>
-                  <Text variant="label-default-s">Email</Text>
-                  <Text variant="body-default-m">
-                    <a href={`mailto:${contact.contactInfo.email}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                      {contact.contactInfo.email}
-                    </a>
-                  </Text>
-                </Column>
-              </Flex>
+            <Column gap="l">
+              <Column gap="s">
+                <Text variant="heading-strong-s" color="brand-strong">Email</Text>
+                <Text variant="body-default-m">
+                  <a 
+                    href={`mailto:${contact.contactInfo.email}`} 
+                    className="contact-link"
+                    style={{ textDecoration: 'none', color: 'inherit' }}
+                  >
+                    {contact.contactInfo.email}
+                  </a>
+                </Text>
+              </Column>
 
-              <Flex gap="m" vertical="center">
-                <Flex 
-                  radius="full" 
-                  background="brand-weak" 
-                  padding="m" 
-                  horizontal="center" 
-                  vertical="center"
-                >
-                  <Icon name="phone" size="m" onBackground="brand-weak" />
-                </Flex>
-                <Column>
-                  <Text variant="label-default-s">Phone</Text>
-                  <Text variant="body-default-m">
-                    <a href={`tel:${contact.contactInfo.phone}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                      {contact.contactInfo.phone}
-                    </a>
-                  </Text>
-                </Column>
-              </Flex>
+              <Column gap="s">
+                <Text variant="heading-strong-s" color="brand-strong">Phone</Text>
+                <Text variant="body-default-m">
+                  <a 
+                    href={`tel:${contact.contactInfo.phone}`} 
+                    className="contact-link"
+                    style={{ textDecoration: 'none', color: 'inherit' }}
+                  >
+                    {contact.contactInfo.phone}
+                  </a>
+                </Text>
+              </Column>
 
-              <Flex gap="m" vertical="center">
-                <Flex 
-                  radius="full" 
-                  background="brand-weak" 
-                  padding="m" 
-                  horizontal="center" 
-                  vertical="center"
-                >
-                  <Icon name="location" size="m" onBackground="brand-weak" />
-                </Flex>
-                <Column>
-                  <Text variant="label-default-s">Address</Text>
-                  <Text variant="body-default-m">{contact.contactInfo.address}</Text>
-                </Column>
-              </Flex>
+              <Column gap="s">
+                <Text variant="heading-strong-s" color="brand-strong">Address</Text>
+                <Text variant="body-default-m">{contact.contactInfo.address}</Text>
+              </Column>
 
-              <Flex gap="m" vertical="center">
-                <Flex 
-                  radius="full" 
-                  background="brand-weak" 
-                  padding="m" 
-                  horizontal="center" 
-                  vertical="center"
-                >
-                  <Icon name="clock" size="m" onBackground="brand-weak" />
-                </Flex>
-                <Column>
-                  <Text variant="label-default-s">Business Hours</Text>
-                  <Text variant="body-default-m">{contact.contactInfo.hours}</Text>
-                </Column>
-              </Flex>
+              <Column gap="s">
+                <Text variant="heading-strong-s" color="brand-strong">Business Hours</Text>
+                <Text variant="body-default-m">{contact.contactInfo.hours}</Text>
+              </Column>
             </Column>
 
             <Line />
@@ -157,35 +140,38 @@ export default function ContactPage() {
             <Column gap="m">
               <Heading variant="heading-strong-s">Connect With Us</Heading>
               <Flex gap="m">
-                <a href="#" style={{ textDecoration: 'none' }}>
+                <a href="#" className="social-link" style={{ textDecoration: 'none' }}>
                   <Flex 
-                    radius="full" 
+                    radius="m" 
                     background="brand-weak" 
                     padding="m" 
                     horizontal="center" 
                     vertical="center"
+                    shadow="s"
                   >
                     <Icon name="linkedin" size="m" onBackground="brand-weak" />
                   </Flex>
                 </a>
-                <a href="#" style={{ textDecoration: 'none' }}>
+                <a href="#" className="social-link" style={{ textDecoration: 'none' }}>
                   <Flex 
-                    radius="full" 
+                    radius="m" 
                     background="brand-weak" 
                     padding="m" 
                     horizontal="center" 
                     vertical="center"
+                    shadow="s"
                   >
                     <Icon name="github" size="m" onBackground="brand-weak" />
                   </Flex>
                 </a>
-                <a href="#" style={{ textDecoration: 'none' }}>
+                <a href="#" className="social-link" style={{ textDecoration: 'none' }}>
                   <Flex 
-                    radius="full" 
+                    radius="m" 
                     background="brand-weak" 
                     padding="m" 
                     horizontal="center" 
                     vertical="center"
+                    shadow="s"
                   >
                     <Icon name="x" size="m" onBackground="brand-weak" />
                   </Flex>
@@ -196,22 +182,7 @@ export default function ContactPage() {
         </Card>
       </Grid>
 
-      <Card padding="l" shadow="m" border="neutral-medium" radius="m">
-        <Column gap="l">
-          <Heading variant="display-strong-m">Our Location</Heading>
-          <div style={{ 
-            width: '100%', 
-            height: '400px', 
-            backgroundColor: '#f5f5f5', 
-            borderRadius: '8px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}>
-            <Text variant="body-default-m">Map placeholder - Replace with your preferred map component</Text>
-          </div>
-        </Column>
-      </Card>
+
     </Column>
   );
 } 

@@ -312,7 +312,7 @@ const gallery = {
 
 const contact = {
   label: "Contact",
-  title: "Contact Us",
+  title: "",
   description: `Get in touch with ${person.company} for your software development and staffing needs`,
   intro: {
     display: true,
