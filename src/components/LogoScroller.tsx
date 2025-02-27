@@ -81,14 +81,14 @@ interface LogoScrollerProps {
 
 // Array of dummy logos from logoipsum.com
 const logos = [
-  { src: "/images/logos/logo1.svg", alt: "Company Logo 1" },
-  { src: "/images/logos/logo2.svg", alt: "Company Logo 2" },
-  { src: "/images/logos/logo3.svg", alt: "Company Logo 3" },
-  { src: "/images/logos/logo4.svg", alt: "Company Logo 4" },
-  { src: "/images/logos/logo5.svg", alt: "Company Logo 5" },
-  { src: "/images/logos/logo6.svg", alt: "Company Logo 6" },
-  { src: "/images/logos/logo7.svg", alt: "Company Logo 7" },
-  { src: "/images/logos/logo8.svg", alt: "Company Logo 8" },
+  { src: "/images/logos/voxo.svg", alt: "Company Logo 1" },
+  { src: "/images/logos/seer.svg", alt: "Company Logo 2" },
+  { src: "/images/logos/perdiem.svg", alt: "Company Logo 3" },
+  { src: "/images/logos/openphone.svg", alt: "Company Logo 4" },
+  { src: "/images/logos/laligne.svg", alt: "Company Logo 5" },
+  { src: "/images/logos/crowdbotics.svg", alt: "Company Logo 6" },
+  { src: "/images/logos/expensify.svg", alt: "Company Logo 7" },
+  { src: "/images/logos/litcheck.webp", alt: "Company Logo 8" },
 ];
 
 export function LogoScroller({ title = "Companies we've worked with", description }: LogoScrollerProps) {

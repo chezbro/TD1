@@ -29,7 +29,7 @@ const mockProjects: ProjectData[] = [
       title: "Senior Engineer Level Development",
       publishedAt: new Date().toISOString(),
       summary: "We leverage rockstar engineers and AI to transform business operations and drive growth.",
-      images: ["/images/projects/project-01/cover-01.jpg"],
+      images: ["/images/perdiemfood.png"],
       team: [{ avatar: "/images/sofrix-black-3.jpg" }],
       link: "#"
     },
