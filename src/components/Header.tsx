@@ -86,7 +86,7 @@ export const Header = () => {
         padding="8"
         horizontal="center"
       >
-        {/* SOFRIX Logo */}
+        {/* Talented Developers Logo */}
         <Flex 
           className={`${styles.logo} s-flex-hide`} 
           position="absolute" 
@@ -101,7 +101,7 @@ export const Header = () => {
           }}
         >
           <Link href="/" style={{ color: 'inherit', textDecoration: 'none' }}>
-            SOFRIX
+            Talented Developers
           </Link>
         </Flex>
         

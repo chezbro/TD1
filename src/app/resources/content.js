@@ -1,14 +1,14 @@
 import { InlineCode } from "@/once-ui/components";
 
 const person = {
-  firstName: "Sofrix",
+  firstName: "Talented Developers",
   lastName: "",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
   role: "Software Development & Staffing",
   avatar: "/images/sofrix-black-3.jpg",
-  company: "Sofrix",
+  company: "Talented Developers",
   languages: [], // optional: Leave the array empty if you don't want to display languages
 };
 
@@ -28,22 +28,22 @@ const social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/sofrix",
+    link: "https://github.com/talented-developers",
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/sofrix",
+    link: "https://www.linkedin.com/company/talented-developers",
   },
   {
     name: "X",
     icon: "x",
-    link: "https://x.com/sofrix",
+    link: "https://x.com/talented-developers",
   },
   {
     name: "Email",
     icon: "email",
-    link: "mailto:eric.chesbrough@sofrix.com",
+    link: "mailto:eric.chesbrough@talented-developers.com",
   },
 ];
 
@@ -54,12 +54,12 @@ const home = {
   headline: <>Artificial Intelligence + Engineering Excellence</>,
   subline: (
     <>
-      We're Sofrix, a software development company that believes smarter software creates stronger businesses.
+      We're Talented Developers, a software development company that believes smarter software creates stronger businesses.
     </>
   ),
   features: {
     display: true,
-    title: "Why Choose Sofrix",
+    title: "Why Choose Talented Developers",
     description: (
       <>
         Our approach combines technical expertise with business acumen to deliver solutions 
@@ -104,16 +104,16 @@ const home = {
   },
   benefits: {
     display: true,
-    title: "The Sofrix Advantage",
+    title: "The Talented Developers Advantage",
     description: (
       <>
-        When you partner with Sofrix, you gain access to a team of experts committed to 
+        When you partner with Talented Developers, you gain access to a team of experts committed to 
         your success. Our unique approach delivers tangible benefits that help your business thrive.
       </>
     ),
     video: {
       url: "https://files.catbox.moe/75yhmi.mp4", // Using the same video from about section
-      title: "The Sofrix Advantage",
+      title: "The Talented Developers Advantage",
       description: "See how our approach delivers real business value through technical excellence and strategic thinking.",
       thumbnail: "/images/projects/project-01/cover-01.jpg",
     },
@@ -160,19 +160,19 @@ const home = {
     },
     items: [
       {
-        quote: "Sofrix delivered a solution that exceeded our expectations and transformed how we operate. Their technical expertise and business understanding made all the difference.",
+        quote: "Talented Developers delivered a solution that exceeded our expectations and transformed how we operate. Their technical expertise and business understanding made all the difference.",
         author: "Sarah Johnson",
         role: "CTO, TechInnovate",
         avatar: "/images/gallery/img-01.jpg",
       },
       {
-        quote: "The development team Sofrix provided integrated seamlessly with our existing staff. Their contributions were invaluable in helping us meet our aggressive timeline.",
+        quote: "The development team Talented Developers provided integrated seamlessly with our existing staff. Their contributions were invaluable in helping us meet our aggressive timeline.",
         author: "Michael Chen",
         role: "VP of Engineering, DataFlow Systems",
         avatar: "/images/gallery/img-03.jpg",
       },
       {
-        quote: "Working with Sofrix has been a game-changer for our business. Their AI integration expertise helped us create a competitive advantage in our market.",
+        quote: "Working with Talented Developers has been a game-changer for our business. Their AI integration expertise helped us create a competitive advantage in our market.",
         author: "Elena Rodriguez",
         role: "Product Director, FutureTech",
         avatar: "/images/gallery/img-06.jpg",
@@ -242,7 +242,7 @@ const home = {
     description: (
       <>
         Our talented team of professionals brings diverse expertise and experience to every project.
-        Get to know the people behind Sofrix's success.
+        Get to know the people behind Talented Developers's success.
       </>
     ),
     members: [
@@ -394,7 +394,7 @@ const home = {
 
 const about = {
   label: "About",
-  title: "About Sofrix",
+  title: "About Talented Developers",
   description: `Learn about ${person.company}, premium software development and staffing services`,
   tableOfContent: {
     display: true,
@@ -405,11 +405,11 @@ const about = {
   },
   calendar: {
     display: true,
-    link: "https://calendly.com/sofrix",
+    link: "https://calendly.com/talented-developers",
   },
   video: {
     url: "https://files.catbox.moe/75yhmi.mp4", // A professional ambient music video
-    title: "About Sofrix",
+    title: "About Talented Developers",
     description: "Discover how we combine technical excellence with business acumen to deliver solutions that drive real value for our clients."
   },
   intro: {
@@ -417,7 +417,7 @@ const about = {
     title: "Our Story",
     description: (
       <>
-        Sofrix emerged from a vision to deliver premium technology solutions differently. By partnering U.S. 
+        Talented Developers emerged from a vision to deliver premium technology solutions differently. By partnering U.S. 
         product managers with exceptional global engineering talent, we provide world-class software 
         development and staffing services at competitive rates. Our dual expertise in custom solutions 
         and resource augmentation gives businesses the technical capabilities they need to scale efficiently.
@@ -541,7 +541,7 @@ const work = {
     title: "How We Work",
     description: (
       <>
-        At Sofrix, we combine technical excellence with business acumen to deliver solutions that drive real value. 
+        At Talented Developers, we combine technical excellence with business acumen to deliver solutions that drive real value. 
         Our dual expertise in custom software development and technical staffing allows us to provide the right 
         approach for your specific needs - whether that's a complete software solution or augmenting your team 
         with specialized talent.
@@ -663,7 +663,7 @@ const contact = {
     ),
   },
   contactInfo: {
-    email: "info@sofrix.com",
+    email: "info@talented-developers.com",
     phone: "+1 (555) 123-4567",
     address: "2219 Main St. Santa Monica, CA 90405",
     hours: "Monday - Friday: 9:00 AM - 6:00 PM PST"
