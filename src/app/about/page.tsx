@@ -19,6 +19,19 @@ import { person, about, social, home } from "@/app/resources/content";
 import React, { useState } from "react";
 import Image from "next/image";
 import { MobileStyles } from "@/components/MobileStyles";
+import { 
+  FaBrain, 
+  FaCode, 
+  FaLightbulb, 
+  FaCogs, 
+  FaRocket, 
+  FaLayerGroup, 
+  FaDatabase, 
+  FaMobileAlt, 
+  FaServer, 
+  FaRobot,
+  FaUsers
+} from "react-icons/fa";
 
 export default function About() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -169,34 +182,6 @@ export default function About() {
             >
               {person.role}
             </Text>
-            {social.length > 0 && (
-              <Flex className={styles.blockAlign} paddingTop="20" paddingBottom="8" gap="8" wrap horizontal="center" fitWidth>
-                {social.map(
-                  (item) =>
-                    item.link && (
-                        <>
-                            <Button
-                                className="s-flex-hide"
-                                key={item.name}
-                                href={item.link}
-                                prefixIcon={item.icon}
-                                label={item.name}
-                                size="s"
-                                variant="secondary"
-                            />
-                            <IconButton
-                                className="s-flex-show"
-                                size="l"
-                                key={`${item.name}-icon`}
-                                href={item.link}
-                                icon={item.icon}
-                                variant="secondary"
-                            />
-                        </>
-                    ),
-                )}
-              </Flex>
-            )}
           </Column>
 
           {about.intro.display && (
@@ -207,84 +192,122 @@ export default function About() {
 
           {about.work.display && (
             <>
-              <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="m" className="s-padding-x-m">
+              <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="m" className={`s-padding-x-m ${styles.sectionHeading}`}>
                 {about.work.title}
               </Heading>
               <Column fillWidth gap="l" marginBottom="40" className="s-padding-x-m">
-                {about.work.experiences.map((experience, index) => (
-                  <Column key={`${experience.company}-${experience.role}-${index}`} fillWidth>
-                    <Flex fillWidth horizontal="space-between" vertical="end" marginBottom="4">
-                      <Text id={experience.company} variant="heading-strong-l">
-                        {experience.company}
-                      </Text>
-                      <Text variant="heading-default-xs" onBackground="neutral-weak">
-                        {experience.timeframe}
-                      </Text>
-                    </Flex>
-                    <Text variant="body-default-s" onBackground="brand-weak" marginBottom="m">
-                      {experience.role}
-                    </Text>
-                    <Column as="ul" gap="16">
-                      {experience.achievements.map((achievement: JSX.Element, index: number) => (
-                        <Text
-                          as="li"
-                          variant="body-default-m"
-                          key={`${experience.company}-${index}`}
-                        >
-                          {achievement}
-                        </Text>
-                      ))}
-                    </Column>
-                    {experience.images.length > 0 && (
-                      <Flex fillWidth paddingTop="m" paddingLeft="40" wrap>
-                        {experience.images.map((image, index) => (
-                          <Flex
-                            key={index}
-                            border="neutral-medium"
-                            radius="m"
-                            //@ts-ignore
-                            minWidth={image.width}
-                            //@ts-ignore
-                            height={image.height}
+                {about.work.experiences.map((experience, index) => {
+                  // Select icon based on service name
+                  let IconComponent;
+                  if (experience.company.toLowerCase().includes('custom') || experience.company.toLowerCase().includes('software')) {
+                    IconComponent = FaCode;
+                  } else if (experience.company.toLowerCase().includes('technical') || experience.company.toLowerCase().includes('staffing')) {
+                    IconComponent = FaUsers;
+                  } else if (experience.company.toLowerCase().includes('consulting')) {
+                    IconComponent = FaLightbulb;
+                  } else {
+                    IconComponent = FaCogs;
+                  }
+                  
+                  return (
+                    <div key={`${experience.company}-${experience.role}-${index}`} className={styles.serviceCard}>
+                      <div className={styles.serviceHeader}>
+                        <div className={styles.serviceTitleArea}>
+                          <div className={styles.serviceTitleWithIcon}>
+                            <IconComponent size={24} color="#5a93fc" />
+                            <Text id={experience.company} variant="heading-strong-l">
+                              {experience.company}
+                            </Text>
+                          </div>
+                          <Text variant="body-default-s" onBackground="brand-weak">
+                            {experience.role}
+                          </Text>
+                        </div>
+                        <Tag size="m" variant="brand">{experience.timeframe}</Tag>
+                      </div>
+                      
+                      <Column as="ul" gap="16" className={styles.serviceAchievements}>
+                        {experience.achievements.map((achievement: JSX.Element, index: number) => (
+                          <Text
+                            as="li"
+                            variant="body-default-m"
+                            key={`${experience.company}-${index}`}
                           >
-                            <SmartImage
-                              enlarge
+                            {achievement}
+                          </Text>
+                        ))}
+                      </Column>
+                      
+                      {experience.images.length > 0 && (
+                        <div className={styles.serviceImages}>
+                          {experience.images.map((image, index) => (
+                            <Flex
+                              key={index}
+                              border="neutral-medium"
                               radius="m"
                               //@ts-ignore
-                              sizes={image.width.toString()}
+                              minWidth={image.width}
                               //@ts-ignore
-                              alt={image.alt}
-                              //@ts-ignore
-                              src={image.src}
-                            />
-                          </Flex>
-                        ))}
-                      </Flex>
-                    )}
-                  </Column>
-                ))}
+                              height={image.height}
+                            >
+                              <SmartImage
+                                enlarge
+                                radius="m"
+                                //@ts-ignore
+                                sizes={image.width.toString()}
+                                //@ts-ignore
+                                alt={image.alt}
+                                //@ts-ignore
+                                src={image.src}
+                              />
+                            </Flex>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </Column>
             </>
           )}
 
           {about.studies.display && (
-            <>
-              <Heading as="h2" id={about.studies.title} variant="display-strong-s" marginBottom="m">
+            <div className={styles.approachSection}>
+              <Heading as="h2" id={about.studies.title} variant="display-strong-s" marginBottom="m" className={`s-padding-x-m ${styles.sectionHeading}`}>
                 {about.studies.title}
               </Heading>
-              <Column fillWidth gap="l" marginBottom="40">
-                {about.studies.institutions.map((institution, index) => (
-                  <Column key={`${institution.name}-${index}`} fillWidth gap="4">
-                    <Text id={institution.name} variant="heading-strong-l">
-                      {institution.name}
-                    </Text>
-                    <Text variant="heading-default-xs" onBackground="neutral-weak">
-                      {institution.description}
-                    </Text>
-                  </Column>
-                ))}
-              </Column>
-            </>
+              <div className={styles.approachGrid}>
+                {about.studies.institutions.map((institution, index) => {
+                  // Select icon based on institution name
+                  let IconComponent;
+                  if (institution.name.toLowerCase().includes('ai') || institution.name.toLowerCase().includes('innovation')) {
+                    IconComponent = FaBrain;
+                  } else if (institution.name.toLowerCase().includes('engineering') || institution.name.toLowerCase().includes('code')) {
+                    IconComponent = FaCode;
+                  } else if (institution.name.toLowerCase().includes('process') || institution.name.toLowerCase().includes('workflow')) {
+                    IconComponent = FaCogs;
+                  } else if (institution.name.toLowerCase().includes('growth') || institution.name.toLowerCase().includes('strategy')) {
+                    IconComponent = FaRocket;
+                  } else {
+                    IconComponent = FaLightbulb;
+                  }
+                  
+                  return (
+                    <div key={`${institution.name}-${index}`} className={styles.approachCard}>
+                      <div className={styles.approachIcon}>
+                        <IconComponent size={32} color="#5a93fc" />
+                      </div>
+                      <Text id={institution.name} variant="heading-strong-l">
+                        {institution.name}
+                      </Text>
+                      <Text variant="body-default-m" onBackground="neutral-weak">
+                        {institution.description}
+                      </Text>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           )}
 
           {about.technical.display && (
@@ -293,46 +316,71 @@ export default function About() {
                 as="h2"
                 id={about.technical.title}
                 variant="display-strong-s"
-                marginBottom="40"
+                marginBottom="m"
+                className={`s-padding-x-m ${styles.sectionHeading}`}
               >
                 {about.technical.title}
               </Heading>
-              <Column fillWidth gap="l">
-                {about.technical.skills.map((skill, index) => (
-                  <Column key={`${skill}-${index}`} fillWidth gap="4">
-                    <Text variant="heading-strong-l">{skill.title}</Text>
-                    <Text variant="body-default-m" onBackground="neutral-weak">
-                      {skill.description}
-                    </Text>
-                    {skill.images && skill.images.length > 0 && (
-                      <Flex fillWidth paddingTop="m" gap="12" wrap>
-                        {skill.images.map((image, index) => (
-                          <Flex
-                            key={index}
-                            border="neutral-medium"
-                            radius="m"
-                            //@ts-ignore
-                            minWidth={image.width}
-                            //@ts-ignore
-                            height={image.height}
-                          >
-                            <SmartImage
-                              enlarge
+              <div className={styles.expertiseContainer}>
+                {about.technical.skills.map((skill, index) => {
+                  // Select icon based on skill title
+                  let IconComponent;
+                  if (skill.title.toLowerCase().includes('full-stack')) {
+                    IconComponent = FaLayerGroup;
+                  } else if (skill.title.toLowerCase().includes('ai')) {
+                    IconComponent = FaRobot;
+                  } else if (skill.title.toLowerCase().includes('mobile')) {
+                    IconComponent = FaMobileAlt;
+                  } else if (skill.title.toLowerCase().includes('database') || skill.title.toLowerCase().includes('data')) {
+                    IconComponent = FaDatabase;
+                  } else if (skill.title.toLowerCase().includes('backend') || skill.title.toLowerCase().includes('server')) {
+                    IconComponent = FaServer;
+                  } else {
+                    IconComponent = FaCode;
+                  }
+                  
+                  return (
+                    <div key={`${skill.title}-${index}`} className={styles.expertiseCard}>
+                      <div className={styles.expertiseContent}>
+                        <div className={styles.expertiseTitle}>
+                          <IconComponent size={24} color="#5a93fc" />
+                          <Text variant="heading-strong-l">{skill.title}</Text>
+                        </div>
+                        <Text variant="body-default-m" onBackground="neutral-weak">
+                          {skill.description}
+                        </Text>
+                      </div>
+                      
+                      {skill.images && skill.images.length > 0 && (
+                        <div className={styles.expertiseImages}>
+                          {skill.images.map((image, index) => (
+                            <Flex
+                              key={index}
+                              border="neutral-medium"
                               radius="m"
                               //@ts-ignore
-                              sizes={image.width.toString()}
+                              minWidth={image.width}
                               //@ts-ignore
-                              alt={image.alt}
-                              //@ts-ignore
-                              src={image.src}
-                            />
-                          </Flex>
-                        ))}
-                      </Flex>
-                    )}
-                  </Column>
-                ))}
-              </Column>
+                              height={image.height}
+                            >
+                              <SmartImage
+                                enlarge
+                                radius="m"
+                                //@ts-ignore
+                                sizes={image.width.toString()}
+                                //@ts-ignore
+                                alt={image.alt}
+                                //@ts-ignore
+                                src={image.src}
+                              />
+                            </Flex>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
             </>
           )}
         </Column>

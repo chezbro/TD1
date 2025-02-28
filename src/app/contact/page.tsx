@@ -36,10 +36,12 @@ export default function ContactPage() {
         <div className="hero-content">
           <RevealFx>
             <Heading variant="display-strong-xl" className="hero-title">{contact.title || "Get in Touch"}</Heading>
-            {contact.intro.display && (
-              <Text variant="body-default-l" className="hero-description">{contact.intro.description}</Text>
-            )}
           </RevealFx>
+          {contact.intro.display && (
+            <RevealFx delay={0.1}>
+              <Text variant="body-default-l" className="hero-description">{contact.intro.description}</Text>
+            </RevealFx>
+          )}
         </div>
         <div className="hero-shape"></div>
       </div>

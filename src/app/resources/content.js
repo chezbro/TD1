@@ -28,22 +28,22 @@ const social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
+    link: "https://github.com/sofrix",
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
+    link: "https://www.linkedin.com/company/sofrix",
   },
   {
     name: "X",
     icon: "x",
-    link: "",
+    link: "https://x.com/sofrix",
   },
   {
     name: "Email",
     icon: "email",
-    link: "mailto:example@gmail.com",
+    link: "mailto:eric.chesbrough@sofrix.com",
   },
 ];
 
@@ -405,7 +405,7 @@ const about = {
   },
   calendar: {
     display: true,
-    link: "https://cal.com",
+    link: "https://calendly.com/sofrix",
   },
   video: {
     url: "https://files.catbox.moe/75yhmi.mp4", // A professional ambient music video
@@ -657,7 +657,7 @@ const contact = {
     title: "Let's Connect",
     description: (
       <>
-        We're always interested in discussing new projects, creative ideas, or opportunities to be part of your vision. 
+        We're always interested in discussing new projects and opportunities.
         Whether you need custom software development, technical staffing, or just want to say hello, we'd love to hear from you.
       </>
     ),
