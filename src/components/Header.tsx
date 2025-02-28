@@ -94,7 +94,7 @@ export const Header = () => {
           style={{ 
             top: '50%',
             transform: 'translateY(-50%)', 
-            color: '#5a93fc', 
+            color: '#000000',
             fontWeight: 'bold',
             fontSize: '1.5rem',
             zIndex: 10
