@@ -88,10 +88,12 @@ export default function Work() {
       
       {/* Companies we've worked with section */}
       <Column fillWidth marginBottom="40">
-        <LogoScroller 
-          title="Companies We've Worked With" 
-          description="We're proud to have partnered with these innovative companies to deliver exceptional software solutions."
-        />
+        <Column maxWidth="m" horizontal="center">
+          <LogoScroller 
+            title="Companies We've Worked With" 
+            description="We're proud to have partnered with these innovative companies to deliver exceptional software solutions."
+          />
+        </Column>
       </Column>
       
       {/* Expertise Areas */}

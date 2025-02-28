@@ -146,10 +146,12 @@ export function HomePage() {
 
       {/* Companies we've worked with section */}
       <RevealFx translateY="16" delay={0.7}>
-        <LogoScroller 
-          title="Companies We've Worked With"             
-          description="We're proud to have collaborated with these amazing organizations on innovative software solutions."
-        />
+        <Column maxWidth="m" horizontal="center">
+          <LogoScroller 
+            title="Companies We've Worked With"             
+            description="We're proud to have collaborated with these amazing organizations on innovative software solutions."
+          />
+        </Column>
       </RevealFx>
 
       {/* Features Section with Images */}

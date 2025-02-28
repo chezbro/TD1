@@ -11,6 +11,7 @@ const LogoScrollerContainer = styled.div`
   overflow: hidden;
   position: relative;
   padding: 2rem 0;
+  max-width: 100%; /* Ensure it doesn't exceed parent width */
 `;
 
 const LogoScrollerTrack = styled.div`
@@ -93,7 +94,7 @@ const logos = [
 
 export function LogoScroller({ title = "Companies we've worked with", description }: LogoScrollerProps) {
   return (
-    <Column gap="l" paddingY="xl">
+    <Column gap="l" paddingY="xl" fillWidth>
       <TitleContainer>
         <Heading as="h2" variant="display-strong-m" wrap="balance">
           <TitleHighlight>{title}</TitleHighlight>
